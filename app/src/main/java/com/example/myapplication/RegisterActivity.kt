@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 
 class RegisterActivity : Activity() {
@@ -16,6 +17,7 @@ class RegisterActivity : Activity() {
         val emailEditText = findViewById<EditText>(R.id.etEmail)
         val passwordEditText = findViewById<EditText>(R.id.etPassword)
         val registerButton = findViewById<Button>(R.id.btnRegister)
+        val loginRedirect = findViewById<TextView>(R.id.tvLoginRedirect) // 👈 Added this line
 
         registerButton.setOnClickListener {
             val email = emailEditText.text.toString()
@@ -36,6 +38,13 @@ class RegisterActivity : Activity() {
                 startActivity(intent)
                 finish()
             }
+        }
+
+        // 👇 Login redirect listener
+        loginRedirect.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.register
 
 import android.app.Activity
 import android.content.Intent
@@ -7,6 +7,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.example.myapplication.R
+import com.example.myapplication.login.LoginActivity
 
 class RegisterActivity : Activity() {
 

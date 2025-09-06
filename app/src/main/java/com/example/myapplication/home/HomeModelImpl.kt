@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.home
 
 class HomeModelImpl : HomeContract.Model {
 

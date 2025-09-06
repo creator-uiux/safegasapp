@@ -1,4 +1,6 @@
-package com.example.myapplication
+package com.example.myapplication.register
+
+import android.util.Patterns
 
 class RegisterPresenter(private val view: RegisterContract.View) : RegisterContract.Presenter {
 
@@ -8,7 +10,7 @@ class RegisterPresenter(private val view: RegisterContract.View) : RegisterContr
             return
         }
 
-        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             view.showValidationError("Invalid email format.")
             return
         }

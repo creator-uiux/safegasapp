@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.home
 
 class HomePresenter(
     private val view: HomeContract.View,

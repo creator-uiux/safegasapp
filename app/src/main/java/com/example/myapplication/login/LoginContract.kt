@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.login
 
 interface LoginContract {
     interface View {

@@ -1,11 +1,15 @@
-package com.example.myapplication
+package com.example.myapplication.home
 
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
+import com.example.myapplication.home.HomeContract
+import com.example.myapplication.home.HomeModelImpl
+import com.example.myapplication.home.HomePresenter
+import com.example.myapplication.R
+import com.example.myapplication.login.LoginActivity
 
 class HomeActivity : Activity(), HomeContract.View {
 

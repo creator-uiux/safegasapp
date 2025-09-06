@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.login
 
 import android.app.Activity
 import android.content.Intent
@@ -7,6 +7,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.example.myapplication.home.HomeActivity
+import com.example.myapplication.login.LoginContract
+import com.example.myapplication.login.LoginPresenter
+import com.example.myapplication.R
+import com.example.myapplication.register.RegisterActivity
 
 class LoginActivity : Activity(), LoginContract.View {
 

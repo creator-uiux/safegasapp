@@ -1,30 +1,38 @@
 package com.example.myapplication.login
 
-import android.app.Activity
-import android.util.Patterns
+class LoginPresenter(
+    private var view: LoginContract.View?,
+    private val model: LoginContract.Model
+) : LoginContract.Presenter {
 
-class LoginPresenter(private val view: LoginContract.View) : LoginContract.Presenter {
-
-    override fun onLoginClicked(email: String, password: String) {
+    override fun onLoginClicked(email: String, password: String, remember: Boolean) {
         if (email.isEmpty() || password.isEmpty()) {
-            view.showValidationError("Email and password are required.")
+            view?.showError("Email and password are required.")
             return
         }
 
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            view.showValidationError("Invalid email format.")
-            return
-        }
+        val (savedEmail, savedPassword) = model.getSavedCredentials()
 
-        val context = view as Activity
-        val sharedPref = context.getSharedPreferences("UserData", Activity.MODE_PRIVATE)
-        val savedEmail = sharedPref.getString("email", null)
-        val savedPassword = sharedPref.getString("password", null)
-
-        if (email == savedEmail && password == savedPassword) {
-            view.showLoginSuccess()
+        if (savedEmail != null && savedPassword != null &&
+            savedEmail == email && savedPassword == password
+        ) {
+            if (remember) {
+                model.saveCredentials(email, password)
+            }
+            view?.navigateToHome()
         } else {
-            view.showLoginError("Invalid email or password.")
+            view?.showError("Invalid email or password.")
         }
+    }
+
+    override fun loadSavedCredentials() {
+        val (email, password) = model.getSavedCredentials()
+        if (email != null && password != null) {
+            view?.restoreCredentials(email, password)
+        }
+    }
+
+    override fun onDestroy() {
+        view = null
     }
 }

@@ -1,31 +1,39 @@
 package com.example.myapplication.register
 
-import android.util.Patterns
+class RegisterPresenter(
+    private var view: RegisterContract.View?,
+    private val model: RegisterContract.Model
+) : RegisterContract.Presenter {
 
-class RegisterPresenter(private val view: RegisterContract.View) : RegisterContract.Presenter {
-
-    override fun onRegisterClicked(fullName: String, email: String, password: String, confirmPassword: String) {
+    override fun onRegisterClicked(
+        fullName: String,
+        email: String,
+        password: String,
+        confirmPassword: String,
+        location: String?,
+        termsAccepted: Boolean
+    ) {
         if (fullName.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-            view.showValidationError("All fields are required.")
-            return
-        }
-
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            view.showValidationError("Invalid email format.")
-            return
-        }
-
-        if (password.length < 6) {
-            view.showValidationError("Password must be at least 6 characters long.")
+            view?.showError("All fields except location are required.")
             return
         }
 
         if (password != confirmPassword) {
-            view.showValidationError("Passwords do not match.")
+            view?.showError("Passwords do not match.")
             return
         }
 
-        // Simulate registration success
-        view.showRegistrationSuccess()
+        if (!termsAccepted) {
+            view?.showError("You must agree to the Terms and Privacy Policy.")
+            return
+        }
+
+        model.saveUser(fullName, email, password, location)
+        view?.showSuccess("Account created successfully!")
+        view?.navigateToLogin()
+    }
+
+    override fun onDestroy() {
+        view = null
     }
 }

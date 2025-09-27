@@ -13,20 +13,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
+
+        <!-- Alert screen -->
         <activity
-            android:name=".AlertPageActivity"
+            android:name=".alert.AlertActivity"
             android:exported="false" />
+
+        <!-- Landing Page (after Login) -->
         <activity
             android:name=".landingpage.LandingPageActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Landing" />
+
+        <!-- Home / Dashboard (after Get Started) -->
+        <activity
+            android:name=".dashboard.DashboardActivity"
+            android:exported="false"
+            android:label="Dashboard" />
+
+        <!-- Register screen -->
         <activity
             android:name=".register.RegisterActivity"
             android:exported="false"
             android:label="Register" />
-        <activity
-            android:name=".home.HomeActivity"
-            android:exported="false"
-            android:label="Home" />
+
+        <!-- Login screen (launcher) -->
         <activity
             android:name=".login.LoginActivity"
             android:exported="true"
@@ -34,10 +45,10 @@
             android:theme="@style/Theme.MyApplication">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

@@ -5,7 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import com.example.myapplication.R
+import com.example.myapplication.dashboard.DashboardActivity
 import com.example.myapplication.home.HomeActivity
+import com.example.myapplication.landingpage.LandingPageActivity
 import com.example.myapplication.register.RegisterActivity
 
 class LoginActivity : Activity(), LoginContract.View {
@@ -79,7 +81,7 @@ class LoginActivity : Activity(), LoginContract.View {
 
     override fun navigateToHome() {
         Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show()
-        startActivity(Intent(this, HomeActivity::class.java))
+        startActivity(Intent(this, LandingPageActivity::class.java))
         finish()
     }
 

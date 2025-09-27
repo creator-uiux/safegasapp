@@ -24,7 +24,7 @@
         android:layout_weight="1"
         android:orientation="vertical"
         android:gravity="center">
-        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_alerts"/>
+        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_alert"/>
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Alerts" android:textSize="10sp"/>
     </LinearLayout>
 
